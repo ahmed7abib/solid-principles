@@ -12,17 +12,14 @@ public class ShoppingCart {
         stock = new Stock();
     }
 
-    public void removeFromCart(Item item) {
-        cartItems.removeIf(it -> item.getCode().equals(it.getCode()));
-    }
-
-    public boolean addToCart(Item item) {
+    public void addToCart(Item item) {
         if (stock.isAvailableQuantity(item)) {
             cartItems.add(item);
-            return true;
-        } else {
-            return false;
         }
+    }
+
+    public void removeFromCart(Item item) {
+        cartItems.removeIf(it -> item.getCode().equals(it.getCode()));
     }
 
     public int getItemsCount() {
