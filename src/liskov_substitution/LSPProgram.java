@@ -1,6 +1,6 @@
 package liskov_substitution;
 
-import liskov_substitution.best_practice.IPost;
+import liskov_substitution.best_practice.using_abstraction.IPost;
 import liskov_substitution.violation_scenario.MentionPost;
 import liskov_substitution.violation_scenario.Post;
 import liskov_substitution.violation_scenario.PostDB;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class LSPProgram {
 
-    public static void LSPDemo() {
+    public static void lspViolationDemo() {
 
         System.out.println("------- VIOLATION EXAMPLE -----------\n");
 
@@ -35,28 +35,56 @@ public class LSPProgram {
 
             post.createPost(db, p);
         }
+    }
 
-        System.out.println("\n------- BEST PRACTICE EXAMPLE -----------\n");
+    public static void lspBestPracticeWithInheritance() {
 
-        PostDB db2 = new PostDB();
-        List<String> posts2 = new ArrayList<>();
+        System.out.println("\n------- BEST PRACTICE EXAMPLE USING INHERITANCE -----------\n");
 
-        posts2.add("POST");
-        posts2.add("#POST");
-        posts2.add("@POST");
+        PostDB db = new PostDB();
+        List<String> posts = new ArrayList<>();
+
+        posts.add("POST");
+        posts.add("#POST");
+        posts.add("@POST");
+
+        liskov_substitution.best_practice.using_inheritance.Post post3;
+
+        for (String p : posts) {
+            if (p.startsWith("#")) {
+                post3 = new liskov_substitution.best_practice.using_inheritance.TagPost();
+            } else if (p.startsWith("@")) {
+                post3 = new liskov_substitution.best_practice.using_inheritance.MentionPost();
+            } else {
+                post3 = new liskov_substitution.best_practice.using_inheritance.Post();
+            }
+
+            post3.createPost(db, p);
+        }
+    }
+
+    public static void lspBestPracticeWithAbstraction() {
+        System.out.println("\n------- BEST PRACTICE EXAMPLE USING Abstraction -----------\n");
+
+        PostDB db = new PostDB();
+        List<String> posts = new ArrayList<>();
+
+        posts.add("POST");
+        posts.add("#POST");
+        posts.add("@POST");
 
         IPost ipost;
 
-        for (String p : posts2) {
+        for (String p : posts) {
             if (p.startsWith("#")) {
-                ipost = new liskov_substitution.best_practice.TagPost();
+                ipost = new liskov_substitution.best_practice.using_abstraction.TagPost();
             } else if (p.startsWith("@")) {
-                ipost = new liskov_substitution.best_practice.MentionPost();
+                ipost = new liskov_substitution.best_practice.using_abstraction.MentionPost();
             } else {
-                ipost = new liskov_substitution.best_practice.Post();
+                ipost = new liskov_substitution.best_practice.using_abstraction.Post();
             }
 
-            ipost.createPost(db2, p);
+            ipost.createPost(db, p);
         }
     }
 }

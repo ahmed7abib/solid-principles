@@ -1,4 +1,4 @@
-package liskov_substitution.best_practice;
+package liskov_substitution.best_practice.using_abstraction;
 
 import liskov_substitution.violation_scenario.PostDB;
 

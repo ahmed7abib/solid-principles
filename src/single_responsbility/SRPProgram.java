@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SRPProgram {
 
-    public static void SRPDemo() {
+    public static void srpDemo() {
         List<Item> cart = new ArrayList<>();
         cart.add(new Item("I_1", 50.0, 3));
         cart.add(new Item("I_2", 60.0, 4));
