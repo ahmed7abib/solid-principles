@@ -1,4 +1,4 @@
-package single_responsbility.best_practies;
+package single_responsbility.best_practice;
 
 import java.util.ArrayList;
 import java.util.List;

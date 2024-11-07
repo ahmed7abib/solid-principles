@@ -1,4 +1,4 @@
-package single_responsbility.bad_scenario;
+package single_responsbility.best_practice;
 
 public class Item {
 

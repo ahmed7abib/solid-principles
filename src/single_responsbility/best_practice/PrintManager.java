@@ -1,4 +1,4 @@
-package single_responsbility.best_practies;
+package single_responsbility.best_practice;
 
 public class PrintManager {
 
